@@ -6,7 +6,10 @@ const assert = require('assert');
 const propertiesPath = path.join(__dirname, 'post_properties.json');
 // Lee y analiza el archivo properties.json
 const properties = JSON.parse(fs.readFileSync(propertiesPath, 'utf8'));
-
+// Se obtiene  la ruta absoluta del archivo properties.json
+const variablesPath = path.join(__dirname, 'variables.json');
+// Lee y analiza el archivo properties.json
+const variables = JSON.parse(fs.readFileSync(variablesPath, 'utf8'));
 
 
 
