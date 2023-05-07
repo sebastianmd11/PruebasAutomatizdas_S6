@@ -36,7 +36,7 @@ https://github.com/DSalamanca94/MISOPruebasAutomatizadas/wiki
 - Gestión de Profile
 
 ## Lista de los 20 Escenarios de pruebas
-20 Escenarios de Prueba:
+
 Gestión de Post
   1. Escenario: Creación y Publicación de Post.
   2. Escenario: Eliminar Post.
