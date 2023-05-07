@@ -23,3 +23,16 @@ Para este punto es necesario tener Ghost instalado localmente y ejecutado en alg
   7) Mover la prueba o las pruebas a ejecutar desde el folder **Pruebas_Kraken/feature/web/Feature_Storage** al folder **Pruebas_Kraken/feature**
   8) Ejecutar el comando "npx kraken-node run"
   
+## Comparacion de Herramientas E2E
+Las herramientas seleccionadas fueron Kraken y Cypress
+En el siguiente en enlace podría encontrar la comparación de las herramientas: 
+https://github.com/DSalamanca94/MISOPruebasAutomatizadas/wiki
+
+## Lista de funcionalidades a probar
+- Gestión de Post
+- Gestión de Tags
+- Gestión de Miembros
+- Gestión de Páginas.
+- Gestión de Profile
+
+
