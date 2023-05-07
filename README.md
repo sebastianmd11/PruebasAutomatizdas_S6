@@ -37,12 +37,12 @@ https://github.com/DSalamanca94/MISOPruebasAutomatizadas/wiki
 
 ## Lista de los 20 Escenarios de pruebas
 20 Escenarios de Prueba:
-1. Gestión de Post
-  1. Escenario: Creación y Publicación de Post.
-    a. Iniciar sesión en Ghost.
-    b. Crear un Post 
-    c. Publicar Post
-    d. Validar que el Post 
+Gestión de Post
+  Escenario: Creación y Publicación de Post.
+    Iniciar sesión en Ghost.
+    Crear un Post 
+    Publicar Post
+    Validar que el Post 
   2. Escenario: Eliminar Post.
     a. Iniciar sesión en Ghost.
     b. Crear un Post 
