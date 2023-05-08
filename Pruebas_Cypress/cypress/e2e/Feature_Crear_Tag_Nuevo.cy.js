@@ -27,6 +27,12 @@ describe('Crear un Tag nuevo', () => {
       .type('Esta es una descripcion de prueba para validar la funcionalidad de crear Tags')
       .get('.gh-btn.gh-btn-primary.gh-btn-icon.ember-view')
       .click()
-
+      .then(() => {
+        cy.get('[data-test-link="tags-back"]').click();
+      })
+      .then(() => {
+        const tagName = 'Tag Example Test';
+        cy.get('h3.gh-tag-list-name').contains(tagName).should('be.visible');
+      });
   });
 });
