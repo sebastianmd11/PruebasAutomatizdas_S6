@@ -13,7 +13,7 @@ Scenario: Hacer Login, crear un miembro, modificar un miembreo, validar que el m
   And I click the button "miembros-nuevo"
   And I wait for 3 seconds
   And I put the value "Nuevo miembro" in "miembro-nombre"
-  And I put the value "nuevo@correo.com" in "miembro-correo"
+  And I put the value "nuevo2@correo.com" in "miembro-correo"
   And I click the button "miembro-guardar"
   And I wait for 4 seconds
   And I click the button "miembros"

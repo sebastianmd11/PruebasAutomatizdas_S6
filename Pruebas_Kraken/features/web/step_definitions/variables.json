@@ -1,10 +1,5 @@
 {
     "UrlBase": "http://localhost:2368/ghost",
-<<<<<<< HEAD
-    "username": "TestingUser@gmail.com",
-    "password": "MISOTesting2023#"
-=======
-    "username": "test@mail.com",
-    "password": "Test123456"
->>>>>>> 6b2b58a8971359ab25b3b35f12f69361da50967b
+    "username": "s.mascareno@uniandes.edu.co",
+    "password": "MISO123456789@"
   }
