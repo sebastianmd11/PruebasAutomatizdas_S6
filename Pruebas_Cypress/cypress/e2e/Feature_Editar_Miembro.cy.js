@@ -25,7 +25,7 @@ describe('Gestión Post', () => {
         cy.get("[data-test-new-member-button=\"true\"]").click();
         cy.wait(2000);
         cy.get("[data-test-input=\"member-name\"]").type('Nuevo miembro');
-        cy.get("[data-test-input=\"member-email\"]").type('nuevo@correo.com');
+        cy.get("[data-test-input=\"member-email\"]").type('nuevoeditaado@correo.com');
         cy.get("[data-test-button=\"save\"]").click();
         
         cy.wait(2000);

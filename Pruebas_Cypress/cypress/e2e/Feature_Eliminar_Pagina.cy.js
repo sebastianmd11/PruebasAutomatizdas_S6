@@ -1,4 +1,6 @@
 //Importar el archivo JSON como variable
+//Tenga en cuenta que al ejecutar esta prueba no deben haber paginas en estado DRAF en el listado//
+
 const properties = require('./properties_sebastian.json');
 const variables =  require('../../variables.json');
 

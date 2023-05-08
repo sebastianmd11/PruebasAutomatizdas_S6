@@ -22,7 +22,7 @@ describe('Utilizar un Tag en una Pagina', () => {
       cy.wait(5000);
       cy.get('.settings-menu-toggle.gh-btn.gh-btn-editor.gh-btn-icon.icon-only.gh-btn-action-icon').click();
       cy.wait(5000);
-      cy.get('.ember-power-select-status-icon').click();
+      cy.get('.ember-power-select-status-icon').first().click();
       cy.wait(5000);
       cy.get('[data-option-index="0"]').click();
       cy.wait(5000);

@@ -9,6 +9,7 @@
   "author": "Equipo",
   "license": "ISC",
   "devDependencies": {
-    "cypress": "^12.11.0"
+    "cypress": "^12.11.0",
+    "cypress-wait-until": "^1.7.2"
   }
 }

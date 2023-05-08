@@ -1,5 +1,5 @@
 {
-    "UrlBase": "http://localhost:2368/ghost",
-    "username": "s.mascareno@uniandes.edu.co",
-    "password": "MISO123456789@"
-  }
+  "UrlBase": "http://localhost:2368/ghost/#/signin",
+  "username": "TestingUser@gmail.com",
+  "password": "MISOTesting2023#"
+}
