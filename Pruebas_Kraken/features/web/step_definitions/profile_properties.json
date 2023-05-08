@@ -17,6 +17,7 @@
         "profile-nombre":"#user-name",
         "old-password":"#user-password-old",
         "new-password":"#user-password-new",
+        "verification-password":"#user-new-password-verification",
         "confirm-password":"#user-new-password-verification",
         "miembro-nombre":"[data-test-input=\"member-name\"]",
         "miembro-correo":"[data-test-input=\"member-email\"]",
