@@ -2,6 +2,7 @@
 Este es un repositorio creado para realizar las actividades de pruebas automatizadas
 
 Para este punto es necesario tener Ghost instalado localmente y ejecutado en algun puerto del servidor local.
+**Es necesario no tener ninguna página en Draft para que algunas pruebas corran correctarmente**
 
 ## Ejecutar Pruebas en Cypress
   1) Clonar el Repositorio
