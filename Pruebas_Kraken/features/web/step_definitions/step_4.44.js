@@ -7,8 +7,16 @@ const variablesPath = path.join(__dirname, 'variables.json');
 // Lee y analiza el archivo properties.json
 const variables = JSON.parse(fs.readFileSync(variablesPath, 'utf8'));
 
-Given('I navigate to my page {string}', async function (page) {
-    let url = variables.UrlBase;
+Given('I navigate to my page {string} {string}', async function (page, version) {
+    
+    let url;
+
+    if (version === '4.44') {
+        url = variables.UrlBase_4;
+    } else {
+        url = variables.UrlBase;
+    }
+    
     return await this.driver.url(url);
 });
 
@@ -18,15 +26,32 @@ When('I enter email {string}', async function (user) {
     return await element.setValue(email);
 });
 
-When('I enter password {string}', async function (user) {
+When('I enter password {string} {string}', async function (user, version) {
     let password = variables.password;
-    let element = await this.driver.$('#password');
+
+    let element;
+
+    if (version === '4.44') {
+        element = await this.driver.$('input[name="password"]');
+    } else {
+        element = await this.driver.$('#password');
+    }
+
     return await element.setValue(password);
 });
 
-When('I put identification {string}', async function (user) {
+When('I put identification {string} {string}', async function (user, version) {
     let email = variables.username;
-    let element = await this.driver.$('#identification');
+
+    let element;
+
+    if (version === '4.44') {
+        element = await this.driver.$('input[name="identification"]');
+    } else {
+        element = await this.driver.$('#identification');
+    }
+
+     
     return await element.setValue(email);
 });
 
