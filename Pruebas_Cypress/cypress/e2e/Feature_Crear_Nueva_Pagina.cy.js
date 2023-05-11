@@ -11,13 +11,13 @@ describe('Crear una nueva página en la aplicación Ghost', () => {
       .wait(2000)
       cy.screenshot(`${test_name}/2`,{overwrite: true})
 
-      .get('#identification').type(variables.username)
+      .get('input[name="identification"]').type(variables.username)
       cy.screenshot(`${test_name}/3`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/4`,{overwrite: true})
 
-      .get('#password').type(variables.password)
+      .get('input[name="password"]').type(variables.password)
       cy.screenshot(`${test_name}/5`,{overwrite: true})
 
       .get(properties.buttons.next).click()
@@ -56,33 +56,21 @@ describe('Crear una nueva página en la aplicación Ghost', () => {
       .wait(2000)
       cy.screenshot(`${test_name}/17`,{overwrite: true})
 
-      .get(properties.buttons["continue to final review"]).click()
+      .get(properties.buttons["confirm publish"]).click()
       cy.screenshot(`${test_name}/18`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/19`,{overwrite: true})
 
-      .get(properties.buttons["confirm publish"]).click()
+      .get(properties.buttons["back to pages"]).click()
       cy.screenshot(`${test_name}/20`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/21`,{overwrite: true})
 
-      .get(properties.buttons["back to editor"]).click()
-      cy.screenshot(`${test_name}/22`,{overwrite: true})
-
-      .wait(2000)
-      cy.screenshot(`${test_name}/23`,{overwrite: true})
-
-      .get(properties.buttons["back to pages"]).click()
-      cy.screenshot(`${test_name}/24`,{overwrite: true})
-
-      .wait(2000)
-      cy.screenshot(`${test_name}/25`,{overwrite: true})
-
       .get('a.gh-post-list-title h3')
       .contains('New Page Test')
       .should('be.visible');
-      cy.screenshot(`${test_name}/26`,{overwrite: true})
+      cy.screenshot(`${test_name}/22`,{overwrite: true})
   });
 });
