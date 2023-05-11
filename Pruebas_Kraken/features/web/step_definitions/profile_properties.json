@@ -1,6 +1,6 @@
 {  
     "buttons": {
-        "sign-in":"[data-test-button=\"sign-in\"]",
+        "sign-in":"[type=\"submit\"]",
         "user":"[class=\"gh-user-avatar relative\"]",
         "profile":"[data-test-nav=\"user-profile\"]",
         "profile-guardar":".gh-btn.gh-btn-primary.gh-btn-icon.ember-view",

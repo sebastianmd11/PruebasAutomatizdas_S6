@@ -1,6 +1,6 @@
 {  
     "buttons": {
-        "sign-in":"[data-test-button=\"sign-in\"]",
+        "sign-in":"[type=\"submit\"]",
         "posts": "[data-test-nav=\"posts\"]",
         "new-post":"[data-test-new-post-button]",
         "publish": "[data-test-button=\"publish-flow\"]",

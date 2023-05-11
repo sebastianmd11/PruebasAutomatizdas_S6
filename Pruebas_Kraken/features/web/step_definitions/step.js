@@ -32,7 +32,7 @@ When('I put identification {string}', async function (user) {
 
 When('I put password {string}', async function (user) {
     let password = variables.password;
-    let element = await this.driver.$('#password');
+    let element = await this.driver.$('input[name="password"]');
     return await element.setValue(password);
 });
 
