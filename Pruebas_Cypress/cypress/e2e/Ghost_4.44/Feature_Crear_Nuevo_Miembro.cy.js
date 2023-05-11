@@ -1,10 +1,10 @@
 //Importar el archivo JSON como variable
 const properties = require('./properties_sebastian.json');
 const variables =  require('../../variables.json');
-const test_name = 'Pages_NewPage'
+const test_name = 'Member_NewMember'
 
-describe('Crear una nueva página en la aplicación Ghost', () => {
-  it('Iniciar sesión y crear una nueva página', () => {
+describe('Crear un nuevo miembro para ghost', () => {
+  it('Iniciar sesión y crear una nueva miembro', () => {
     cy.visit(variables.UrlBase)
       cy.screenshot(`${test_name}/1`,{overwrite: true})
 
@@ -26,63 +26,50 @@ describe('Crear una nueva página en la aplicación Ghost', () => {
       .wait(2000)
       cy.screenshot(`${test_name}/7`,{overwrite: true})
 
-      .get(properties.buttons.pages).click()
+      .get(properties.buttons.members).click()
       cy.screenshot(`${test_name}/8`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/9`,{overwrite: true})
 
-      .get(properties.buttons["New Page"]).click()
+      .get(properties.buttons['new member']).click()
       cy.screenshot(`${test_name}/10`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/11`,{overwrite: true})
 
-      .get('textarea[placeholder="Page title"]').type('New Page Test')
+      .get(properties.inputs.name).type('Sebastian')
       cy.screenshot(`${test_name}/12`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/13`,{overwrite: true})
 
-      .get('div[data-placeholder="Begin writing your page..."]').type('This is a test for a new page')
+      .get(properties.inputs.email).type('Sebastian@gmail.com')
       cy.screenshot(`${test_name}/14`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/15`,{overwrite: true})
 
-      .get(properties.buttons.publish).click()
+      .get(properties.inputs.note).type('Esta es una nota para el nuevo miembro sebastian')
       cy.screenshot(`${test_name}/16`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/17`,{overwrite: true})
 
-      .get(properties.buttons["continue to final review"]).click()
+      .get(properties.buttons['save member']).click()
       cy.screenshot(`${test_name}/18`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/19`,{overwrite: true})
 
-      .get(properties.buttons["confirm publish"]).click()
+      .get(properties.buttons.members).click()
       cy.screenshot(`${test_name}/20`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/21`,{overwrite: true})
 
-      .get(properties.buttons["back to editor"]).click()
-      cy.screenshot(`${test_name}/22`,{overwrite: true})
-
-      .wait(2000)
-      cy.screenshot(`${test_name}/23`,{overwrite: true})
-
-      .get(properties.buttons["back to pages"]).click()
-      cy.screenshot(`${test_name}/24`,{overwrite: true})
-
-      .wait(2000)
-      cy.screenshot(`${test_name}/25`,{overwrite: true})
-
-      .get('a.gh-post-list-title h3')
-      .contains('New Page Test')
+      .get('h3.gh-members-list-name').should('contain', 'Sebastian')
       .should('be.visible');
-      cy.screenshot(`${test_name}/26`,{overwrite: true})
+      cy.screenshot(`${test_name}/22`,{overwrite: true})
   });
 });

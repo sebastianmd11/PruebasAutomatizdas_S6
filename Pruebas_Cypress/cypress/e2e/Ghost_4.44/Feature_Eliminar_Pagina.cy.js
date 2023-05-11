@@ -1,8 +1,8 @@
 //Importar el archivo JSON como variable
 //Tenga en cuenta que al ejecutar esta prueba no deben haber paginas en estado DRAF en el listado//
 
-const properties = require('./properties_sebastian.json');
-const variables =  require('../../variables.json');
+const properties = require('./properties_sebastian_4.44.json');
+const variables =  require('../../variables_4.44.json');
 const test_name = 'Pages_DeletePage'
 
 describe('Eliminar una página de la aplicación Ghost', () => {
@@ -13,13 +13,13 @@ describe('Eliminar una página de la aplicación Ghost', () => {
       .wait(2000)
       cy.screenshot(`${test_name}/2`,{overwrite: true})
 
-      .get('#identification').type(variables.username)
+      .get('input[name="identification"]').type(variables.username)
       cy.screenshot(`${test_name}/3`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/4`,{overwrite: true})
 
-      .get('#password').type(variables.password)
+      .get('input[name="password"]').type(variables.password)
       cy.screenshot(`${test_name}/5`,{overwrite: true})
 
       .wait(2000)
@@ -61,55 +61,46 @@ describe('Eliminar una página de la aplicación Ghost', () => {
       .wait(2000)
       cy.screenshot(`${test_name}/18`,{overwrite: true})
 
-      .get(properties.buttons["continue to final review"]).click()
+      .get(properties.buttons["confirm publish"]).click()
       cy.screenshot(`${test_name}/19`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/20`,{overwrite: true})
 
-      .get(properties.buttons["confirm publish"]).click()
+      .wait(2000)
       cy.screenshot(`${test_name}/21`,{overwrite: true})
 
-      .wait(2000)
+      .get(properties.buttons["back to pages"]).click()
       cy.screenshot(`${test_name}/22`,{overwrite: true})
 
-      .get(properties.buttons["back to editor"]).click()
+      .wait(2000)
       cy.screenshot(`${test_name}/23`,{overwrite: true})
 
-      .wait(2000)
+      .get(properties.buttons["edit page"]).first().click()
       cy.screenshot(`${test_name}/24`,{overwrite: true})
 
-      .get(properties.buttons["back to pages"]).click()
+      .wait(2000)
       cy.screenshot(`${test_name}/25`,{overwrite: true})
 
-      .wait(2000)
+      .get(properties.buttons["page settings"]).click()
       cy.screenshot(`${test_name}/26`,{overwrite: true})
 
-      .get(properties.buttons["edit page"]).first().click()
+      .wait(2000)
       cy.screenshot(`${test_name}/27`,{overwrite: true})
 
-      .wait(2000)
+      .get(properties.buttons["delete page"]).click()
       cy.screenshot(`${test_name}/28`,{overwrite: true})
 
-      .get(properties.buttons["page settings"]).click()
+      .wait(2000)
       cy.screenshot(`${test_name}/29`,{overwrite: true})
 
-      .wait(2000)
+      .get(properties.buttons["confirm delete"]).click()
       cy.screenshot(`${test_name}/30`,{overwrite: true})
 
-      .get(properties.buttons["delete page"]).click()
+      .wait(2000)
       cy.screenshot(`${test_name}/31`,{overwrite: true})
 
-      .wait(2000)
-      cy.screenshot(`${test_name}/32`,{overwrite: true})
-
-      .get(properties.buttons["confirm delete"]).click()
-      cy.screenshot(`${test_name}/33`,{overwrite: true})
-
-      .wait(2000)
-      cy.screenshot(`${test_name}/34`,{overwrite: true})
-
       .get('h3.gh-content-entry-title').should('not.contain', 'Delete Page Test')
-      cy.screenshot(`${test_name}/35`,{overwrite: true})
+      cy.screenshot(`${test_name}/32`,{overwrite: true})
   });
 });

@@ -1,12 +1,11 @@
-//Importar el archivo JSON como variable
 //Tenga en cuenta que al ejecutar esta prueba no deben haber paginas en estado DRAF en el listado//
+const properties = require('./properties_sebastian_4.44.json');
+const variables =  require('../../variables_4.44.json');
+const test_name = 'Pages_EditPage'
 
-const properties = require('./properties_sebastian.json');
-const variables =  require('../../variables.json');
-const test_name = 'Pages_DeletePage'
+describe('Login and create a new page', () => {
 
-describe('Eliminar una página de la aplicación Ghost', () => {
-  it('Iniciar sesión, crear una página nueva y luego eliminarla', () => {
+  it('Iniciar sesión y crear una nueva página', () => {
     cy.visit(variables.UrlBase)
     cy.screenshot(`${test_name}/1`,{overwrite: true})
 
@@ -43,13 +42,13 @@ describe('Eliminar una página de la aplicación Ghost', () => {
       .wait(2000)
       cy.screenshot(`${test_name}/12`,{overwrite: true})
 
-      .get('textarea[placeholder="Page title"]').type('Delete Page Test')
+      .get('textarea[placeholder="Page title"]').type('Edit Page Test')
       cy.screenshot(`${test_name}/13`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/14`,{overwrite: true})
 
-      .get('div[data-placeholder="Begin writing your page..."]').type('Este test inicia sesión, crea una página nueva y luego elimina la página creada.')
+      .get('div[data-placeholder="Begin writing your page..."]').type('Este es un test para publicar una página, despublicarla para posteriormente editar y publicarla nuevamente')
       cy.screenshot(`${test_name}/15`,{overwrite: true})
 
       .wait(2000)
@@ -85,31 +84,70 @@ describe('Eliminar una página de la aplicación Ghost', () => {
       .wait(2000)
       cy.screenshot(`${test_name}/26`,{overwrite: true})
 
+      // Edit page
       .get(properties.buttons["edit page"]).first().click()
       cy.screenshot(`${test_name}/27`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/28`,{overwrite: true})
 
-      .get(properties.buttons["page settings"]).click()
+      .get(properties.buttons["unpublish page"]).click()
       cy.screenshot(`${test_name}/29`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/30`,{overwrite: true})
 
-      .get(properties.buttons["delete page"]).click()
+      .get(properties.buttons["confirm unpublish"]).click()
       cy.screenshot(`${test_name}/31`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/32`,{overwrite: true})
 
-      .get(properties.buttons["confirm delete"]).click()
+      .get('textarea[placeholder="Page title"]').clear().type('Edit Page Test - Edited')
       cy.screenshot(`${test_name}/33`,{overwrite: true})
 
       .wait(2000)
       cy.screenshot(`${test_name}/34`,{overwrite: true})
 
-      .get('h3.gh-content-entry-title').should('not.contain', 'Delete Page Test')
+      .get(properties.buttons.publish).click()
       cy.screenshot(`${test_name}/35`,{overwrite: true})
+
+      .wait(2000)
+      cy.screenshot(`${test_name}/36`,{overwrite: true})
+
+      .get(properties.buttons["continue to final review"]).click()
+      cy.screenshot(`${test_name}/37`,{overwrite: true})
+
+      .wait(2000)
+      cy.screenshot(`${test_name}/38`,{overwrite: true})
+
+      .get(properties.buttons["confirm publish"]).click()
+      cy.screenshot(`${test_name}/39`,{overwrite: true})
+
+      .wait(2000)
+      cy.screenshot(`${test_name}/40`,{overwrite: true})
+
+      .get(properties.buttons["back to editor"]).click()
+      cy.screenshot(`${test_name}/41`,{overwrite: true})
+
+      .wait(2000)
+      cy.screenshot(`${test_name}/42`,{overwrite: true})
+
+      .get(properties.buttons["back to pages"]).click()
+      cy.screenshot(`${test_name}/43`,{overwrite: true})
+
+      .wait(2000)
+      cy.screenshot(`${test_name}/44`,{overwrite: true})
+
+
+    // Verify new page exists
+    .get('h3.gh-content-entry-title')
+    .first()
+    .invoke('text')
+    .then((text) => {
+      assert.strictEqual(text.trim(), 'Edit Page Test - Edited');
+    });
+    cy.screenshot(`${test_name}/45`,{overwrite: true})
+      
   });
 });
