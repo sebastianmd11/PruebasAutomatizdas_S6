@@ -1,20 +1,20 @@
 //Importar el archivo JSON como variable
-const properties = require('./properties_sebastian.json');
-const variables =  require('../../variables.json');
-const test_name = 'Pages_NewPage'
-let number = 1;
+const properties = require('./properties_sebastian_4.44.json');
+const variables =  require('../../../variables_4.44.json');
+const test_name = 'Pages_NewPage_4.44'
+let number =1;
 
 describe('Crear una nueva página en la aplicación Ghost', () => {
   it('Iniciar sesión y crear una nueva página', () => {
     cy.visit(variables.UrlBase)
-      cy.screenshot(`${test_name}/${number}_navegacion_a_ghost`,{overwrite: true},{capture: 'runner'})
-      number++;
+    cy.screenshot(`${test_name}/${number}_navegacion_a_ghost`,{overwrite: true},{capture: 'runner'})
+    number++;
 
-      cy.wait(2000)
-      cy.screenshot(`${test_name}/${number}_ingresar_username_before`,{overwrite: true},{capture: 'runner'})
-      number++;
+    cy.wait(2000)
+    cy.screenshot(`${test_name}/${number}_ingresar_username_before`,{overwrite: true},{capture: 'runner'})
+    number++;
 
-      cy.get('#identification').type(variables.username)
+      cy.get('input[name="identification"]').type(variables.username)
       
 
       cy.wait(2000)
@@ -23,14 +23,14 @@ describe('Crear una nueva página en la aplicación Ghost', () => {
       cy.screenshot(`${test_name}/${number}_ingresar_password_before`,{overwrite: true},{capture: 'runner'})
       number++;
 
-      cy.get('#password').type(variables.password)
-      
+      cy.get('input[name="password"]').type(variables.password)
 
       cy.wait(2000)
       cy.screenshot(`${test_name}/${number}_ingresar_password_after`,{overwrite: true},{capture: 'runner'})
       number++;
       cy.screenshot(`${test_name}/${number}_click_signIn_before`,{overwrite: true},{capture: 'runner'})
       number++;
+      
 
       cy.get(properties.buttons.next).click()
       
@@ -50,7 +50,7 @@ describe('Crear una nueva página en la aplicación Ghost', () => {
       cy.screenshot(`${test_name}/${number}_click_newPage_before`,{overwrite: true},{capture: 'runner'})
       number++;
 
-      cy.get(properties.buttons["New Page"]).click()
+      cy.get(properties.buttons["New Page"]).first().click()
       
 
       cy.wait(2000)
@@ -83,15 +83,6 @@ describe('Crear una nueva página en la aplicación Ghost', () => {
       cy.wait(2000)
       cy.screenshot(`${test_name}/${number}_click_publish_after`,{overwrite: true})
       number++;
-      cy.screenshot(`${test_name}/${number}_click_continueFinalReview_before`,{overwrite: true},{capture: 'runner'})
-      number++;
-
-      cy.get(properties.buttons["continue to final review"]).click()
-      
-
-      cy.wait(2000)
-      cy.screenshot(`${test_name}/${number}_click_continueFinalReview_after`,{overwrite: true},{capture: 'runner'})
-      number++;
       cy.screenshot(`${test_name}/${number}_click_confirmPublish_before`,{overwrite: true},{capture: 'runner'})
       number++;
 
@@ -101,19 +92,11 @@ describe('Crear una nueva página en la aplicación Ghost', () => {
       cy.wait(2000)
       cy.screenshot(`${test_name}/${number}_click_confirmPublish_after`,{overwrite: true},{capture: 'runner'})
       number++;
-      cy.screenshot(`${test_name}/${number}_click_backToEditor_before`,{overwrite: true},{capture: 'runner'})
-      number++;
-
-      cy.get(properties.buttons["back to editor"]).click()
-      
-
-      cy.wait(2000)
-      cy.screenshot(`${test_name}/${number}_click_backToEditor_after`,{overwrite: true},{capture: 'runner'})
-      number++;
       cy.screenshot(`${test_name}/${number}_click_backToPages_before`,{overwrite: true},{capture: 'runner'})
       number++;
 
       cy.get(properties.buttons["back to pages"]).click()
+      
 
       cy.wait(2000)
       cy.screenshot(`${test_name}/${number}_click_backToPages_after`,{overwrite: true},{capture: 'runner'})
@@ -125,6 +108,5 @@ describe('Crear una nueva página en la aplicación Ghost', () => {
       .contains('New Page Test')
       .should('be.visible');
       cy.screenshot(`${test_name}/${number}_assert_after`,{overwrite: true},{capture: 'runner'})
-      
   });
 });
