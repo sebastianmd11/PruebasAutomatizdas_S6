@@ -8,7 +8,7 @@ describe('Buscar un miembro', () => {
     let contador= FileNum;
   
     before(() => {
-        cy.readFile('variables.json').then((content) => {
+        cy.readFile('variables_4.44.json').then((content) => {
           variables = content;
         });
         cy.readFile('post_properties.json').then((content_post) => {

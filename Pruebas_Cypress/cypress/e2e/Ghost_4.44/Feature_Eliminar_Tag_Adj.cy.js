@@ -7,7 +7,7 @@ describe('Eliminar un Tag', () => {
   let contador= FileNum;
 
   before(() => {
-    cy.readFile('variables.json').then((content) => {
+    cy.readFile('variables_4.44.json').then((content) => {
       variables = content;
     });
   });
