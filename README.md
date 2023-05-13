@@ -76,12 +76,15 @@ https://github.com/users/sebastianmd11/projects/1
 
 # Video de explicación del procedimiento realizado durante la semana.
 
-# Lista de funcionalidades a probar
-- Gestión de Post
-- Gestión de Tags
-- Gestión de Miembros
-- Gestión de Páginas.
-- Gestión de Profile
+# Lista de funcionalidades para pruebas de VRT
+- Post: Crear un Post
+- Post: Revisar filtro de Post Publicados
+- Miembro: Elmiminar un mimebro
+- Miembro: Filtrar Miembros
+- Pages: Crear nueva página
+- Pages: Eliminar Página
+- Tag: Eliminar un tag
+- Tag: Nuevo Tag
 
 # Lista de los 20 Escenarios de pruebas
 
