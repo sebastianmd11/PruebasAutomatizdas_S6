@@ -8,7 +8,7 @@ Cypress Version: 12.9.0
 Ghost-CLI version: 1.24.0
 Kraken-Node Version 1.0.0
 
-Para esta semana se utilizaron dos versiones de Ghost corriendo en diferentes servidores locales para las pruebas de regresión.
+Para esta semana se utilizaron dos versiones de Ghost corriendo en diferentes servidores locales para las pruebas de regresión visual.
 
 Ghost Version 5.40.2 
 Ghost Version 4.44.0
@@ -57,19 +57,28 @@ Para las pruebas de regresión se modificaron los scripts de la herramienta Cypr
   11) Seleccionar la prueba a correr en la carpeta de Specs y dentro de la sucarpeta Ghost 4.44
   12) Las capturas de pantalla generadas pueden ser revisadas en la ruta **Pruebas_Cypress/cypress/screenshots**
   
-## Comparacion de Herramientas E2E
-Las herramientas seleccionadas fueron Kraken y Cypress
-En el siguiente en enlace podría encontrar la comparación de las herramientas: 
-https://github.com/DSalamanca94/MISOPruebasAutomatizadas/wiki
 
-## Lista de funcionalidades a probar
+# Comparacion de Herramientas de Pruebas de Regresión Visual
+Las herramientas seleccionadas para la regresión visual fueron: Ressemble y Backstop,
+Para la ejecución VRT se seleccionó la herramienta Ressemble por la facilidad de modificación de la codificación para adaptarlo a nuestras necesidades.
+La carpeta para el proyecto en resemble queda en la carpeta *Pruebas_Visual_Resemble*. La Herramienta Backstop se analiza de acuerdo al tutorial de clase
+A continuación se encuentra el enlace para el análisis de pros y contras de las herramientas
+
+# Código del Reporte de comparación en html
+Dentro de la carpeta *Pruebas_Visual_Resemble/results* se encuentran los resultados de los 10 escenarios de cada prueba de regresion visual. Por cada funcionalidad se crea una carpeta que contiene internamente  los screenshots de la versión de Ghost 4.44 y la versión de Ghost 5.40 (before y after).
+Dentro de cada carpeta contiene los screenshots de comparación y el archivo reporte.html que muestra el reporte por cada funcionalidad.
+
+# Reportes de incidencias visuales.
+
+
+# Lista de funcionalidades a probar
 - Gestión de Post
 - Gestión de Tags
 - Gestión de Miembros
 - Gestión de Páginas.
 - Gestión de Profile
 
-## Lista de los 20 Escenarios de pruebas
+# Lista de los 20 Escenarios de pruebas
 
 Gestión de Post
   1. Escenario: Creación y Publicación de Post.
