@@ -1,7 +1,7 @@
 describe('Gestión Post', () => {
     let properties;
     let variables;
-    const test_name = 'MemberDelete_4_44';
+    const test_name = 'MemberDelete_4.44';
     let numeroPantalla=0;
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   

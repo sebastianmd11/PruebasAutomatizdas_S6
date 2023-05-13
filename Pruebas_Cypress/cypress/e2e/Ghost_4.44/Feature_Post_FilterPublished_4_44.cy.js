@@ -3,7 +3,7 @@ describe('Gestión Post', () => {
   let variables;
   const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
   let numeroPantalla = 0;  
-  const test_name = 'Post_FilterPublished_4_44';
+  const test_name = 'Post_FilterPublished_4.44';
 
   before(() => {
     cy.readFile('variables_4.44.json').then((content) => {
