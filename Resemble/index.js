@@ -2,7 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
 const resemble = require('resemblejs');
-const folderPath = './results/Members_FilterMember';
+const basePath = './results/';
+
+const subdirs = fs.readdirSync(basePath).filter((file) => {
+  return fs.statSync(path.join(basePath, file)).isDirectory();
+});
+
+
 
 async function compareImages(beforeImagePath, afterImagePath) {
   const beforeImageBuffer = fs.readFileSync(beforeImagePath);
@@ -27,45 +33,56 @@ async function executeTest() {
   const browser = await chromium.launch();
   const context = await browser.newContext();
   const page = await context.newPage();
+  let resultInfo = {}
 
-  try {
-    const files = fs.readdirSync(folderPath).filter(file => file.endsWith('.png'));
+  for(folderPath of subdirs ){
+    folderPath = basePath + folderPath ;
+    
+    try {
+      const files = fs.readdirSync(folderPath)
+                    .filter(file => file.startsWith('before') && file.endsWith('.png'));
+      
+  
+      const datetime = new Date().toISOString().replace(/:/g, '-');
+  
+      resultInfo = {}
+  
+      for (let i = 1; i <= files.length; i++) {
+        const beforeImagePath = `${folderPath}/before-${i}.png`;
+        const afterImagePath = `${folderPath}/after-${i}.png`;
+  
+        const diff = await compareImages(beforeImagePath, afterImagePath);
+  
+        resultInfo[i] = {
+          isSameDimensions: diff.isSameDimensions,
+          dimensionDifference: diff.dimensionDifference,
+          rawMisMatchPercentage: diff.rawMisMatchPercentage,
+          misMatchPercentage: diff.misMatchPercentage,
+          diffBounds: diff.diffBounds,
+          analysisTime: diff.analysisTime
+      }
+  
+        const diffImagePath = `${folderPath}/compare-${i}.png`;
+        fs.writeFileSync(diffImagePath, Buffer.from(diff.getBuffer()));
+        fs.writeFileSync(`${folderPath}/report.html`, createReport(datetime, resultInfo), { flag: 'w' });
+        fs.copyFileSync('./index.css', `${folderPath}/index.css`);
 
-    const datetime = new Date().toISOString().replace(/:/g, '-');
-
-    let resultInfo = {}
-
-    for (let i = 1; i <= files.length / 2; i++) {
-      const beforeImagePath = `${folderPath}/before-${i}.png`;
-      const afterImagePath = `${folderPath}/after-${i}.png`;
-
-      const diff = await compareImages(beforeImagePath, afterImagePath);
-
-      resultInfo[i] = {
-        isSameDimensions: diff.isSameDimensions,
-        dimensionDifference: diff.dimensionDifference,
-        rawMisMatchPercentage: diff.rawMisMatchPercentage,
-        misMatchPercentage: diff.misMatchPercentage,
-        diffBounds: diff.diffBounds,
-        analysisTime: diff.analysisTime
+     
+        console.log(`Comparación entre ${beforeImagePath} y ${afterImagePath} completada. Imagen de diferencia guardada en ${diffImagePath}.`);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      await browser.close();
     }
-
-      const diffImagePath = `${folderPath}/compare-${i}.png`;
-      fs.writeFileSync(diffImagePath, Buffer.from(diff.getBuffer()));
-      fs.writeFileSync(`${folderPath}/report.html`, createReport(datetime, resultInfo));
-      fs.copyFileSync('./index.css', `${folderPath}/index.css`);
-   
-      console.log(`Comparación entre ${beforeImagePath} y ${afterImagePath} completada. Imagen de diferencia guardada en ${diffImagePath}.`);
-    }
-  } catch (err) {
-    console.error(err);
-  } finally {
-    await browser.close();
+    console.log('------------------------------------------------------------------------------------')
+    console.log("Execution finished. Check the report under the results folder")  
   }
-  console.log('------------------------------------------------------------------------------------')
-  console.log("Execution finished. Check the report under the results folder")
-  return resultInfo;  
-}
+
+  }
+  
+  
+  
 
 function createReport(datetime, resultInfo) {
   let reportHtml = `
