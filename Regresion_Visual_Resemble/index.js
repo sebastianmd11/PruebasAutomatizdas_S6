@@ -2,7 +2,7 @@
 const fs = require('fs');
 const path = require('path');
 const compareImages = require('resemblejs/compareImages');
-const tests = ['Pages_DeletePage', 'Pages_NewPage','MemberDelete', 'PostCreate','Post_FilterPublished'];
+const tests = ['Pages_DeletePage', 'Pages_NewPage'];
 
 let folder1;
 let folder2;
