@@ -43,7 +43,7 @@ Para este punto es necesario tener Ghost instaladas las dos versiones de Ghost m
   8) Ejecutar el comando "npx kraken-node run"
   9) Las capturas de pantalla generadas pueden ser revisadas en la ruta **Pruebas_Kraken/reports**
   
-# Los 10 escnearios de prueba modificados para la versión de Ghost 4.44.0. 
+# Los 10 escenarios de prueba modificados para la versión de Ghost 4.44.0. 
 Para las pruebas de regresión se modificaron los scripts de la herramienta Cypress. Esta herramienta se seleccionó por su flexibilidad de ejecución y rapidez.
 ## Ejecutar Pruebas en Cypress
   1) Clonar el Repositorio
