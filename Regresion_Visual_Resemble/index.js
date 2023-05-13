@@ -1,50 +1,136 @@
-
 const fs = require('fs');
 const path = require('path');
-const compareImages = require('resemblejs/compareImages');
-const tests = ['Pages_DeletePage', 'Pages_NewPage'];
+const { chromium } = require('playwright');
+const resemble = require('resemblejs');
+const basePath = './results/';
 
-let folder1;
-let folder2;
-let options = {};
-let files1;
-let files2;
+const subdirs = fs.readdirSync(basePath).filter((file) => {
+  return fs.statSync(path.join(basePath, file)).isDirectory();
+});
 
-async function executeTest(){
 
-    for(let i = 0; i < tests.length; i++){
 
-        const test = tests[i];
-        folder1 = `../Capturas_Ghost_V4.44/${test}_4.44`;
-        folder2 = `../Capturas_Ghost_V5.40.2/Cypress/${test}`;
-        
-        files1 = fs.readdirSync(folder1);
-        files2 = fs.readdirSync(folder2);
+async function compareImages(beforeImagePath, afterImagePath) {
+  const beforeImageBuffer = fs.readFileSync(beforeImagePath);
+  const afterImageBuffer = fs.readFileSync(afterImagePath);
 
-        let resultsFolder = `results`;
-        if (!fs.existsSync(resultsFolder)){
-            fs.mkdirSync(resultsFolder);
+  const diff = await new Promise((resolve, reject) => {
+    resemble(beforeImageBuffer)
+      .compareTo(afterImageBuffer)
+      .onComplete((data) => {
+        if (data.error) {
+          reject(data.error);
+        } else {
+          resolve(data);
         }
+      });
+  });
 
-        resultsFolder = `results/${test}`;
-        if (!fs.existsSync(resultsFolder)){
-            fs.mkdirSync(resultsFolder);
-        }
-
-        for (const file1 of files1) {
-            const file2 = files2.find((f) => f === file1);
-            if (file2) {
-                const data = await compareImages(
-                    fs.readFileSync(path.join(folder1, file1)),
-                    fs.readFileSync(path.join(folder2, file2)),
-                    options
-                );
-                fs.writeFileSync(`results/${test}/${file1}_compare.png`, data.getBuffer());
-            }
-        }
-    }
-
-    return 'completado'
+  return diff;
 }
 
+async function executeTest() {
+  const browser = await chromium.launch();
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  let resultInfo = {}
+
+  for(folderPath of subdirs ){
+    folderPath = basePath + folderPath ;
+    
+    try {
+      const files = fs.readdirSync(folderPath)
+                    .filter(file => file.startsWith('before') && file.endsWith('.png'));
+      
+  
+      const datetime = new Date().toISOString().replace(/:/g, '-');
+  
+      resultInfo = {}
+  
+      for (let i = 1; i <= files.length; i++) {
+        const beforeImagePath = `${folderPath}/before-${i}.png`;
+        const afterImagePath = `${folderPath}/after-${i}.png`;
+  
+        const diff = await compareImages(beforeImagePath, afterImagePath);
+  
+        resultInfo[i] = {
+          isSameDimensions: diff.isSameDimensions,
+          dimensionDifference: diff.dimensionDifference,
+          rawMisMatchPercentage: diff.rawMisMatchPercentage,
+          misMatchPercentage: diff.misMatchPercentage,
+          diffBounds: diff.diffBounds,
+          analysisTime: diff.analysisTime
+      }
+  
+        const diffImagePath = `${folderPath}/compare-${i}.png`;
+        fs.writeFileSync(diffImagePath, Buffer.from(diff.getBuffer()));
+        fs.writeFileSync(`${folderPath}/report.html`, createReport(datetime, resultInfo), { flag: 'w' });
+        fs.copyFileSync('./index.css', `${folderPath}/index.css`);
+
+     
+        console.log(`Comparación entre ${beforeImagePath} y ${afterImagePath} completada. Imagen de diferencia guardada en ${diffImagePath}.`);
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      await browser.close();
+    }
+    console.log('------------------------------------------------------------------------------------')
+    console.log("Execution finished. Check the report under the results folder")  
+  }
+
+  }
+  
+  
+  
+
+function createReport(datetime, resultInfo) {
+  let reportHtml = `
+    <html>
+      <head>
+        <title>VRT Report</title>
+        <link href="index.css" type="text/css" rel="stylesheet">
+      </head>
+      <body>
+        <h1>VRT Report</h1>
+        <p>Executed: ${datetime}</p>
+  `;
+
+  for (let i = 1; i <= Object.keys(resultInfo).length; i++) {
+    reportHtml += `
+      <div class="screenshot" id="test${i}">
+        <div class="btitle">
+          <h2>Screenshot: ${i}</h2>
+          <p>Data: ${JSON.stringify(resultInfo[i])}</p>
+        </div>
+        <div class="imgline">
+          <div class="imgcontainer">
+            <span class="imgname">Reference</span>
+            <img class="img2" src="before-${i}.png" id="refImage" label="Reference">
+          </div>
+          <div class="imgcontainer">
+            <span class="imgname">Test</span>
+            <img class="img2" src="after-${i}.png" id="testImage" label="Test">
+          </div>
+        </div>
+        <div class="imgline">
+          <div class="imgcontainer">
+            <span class="imgname">Diff</span>
+            <img class="imgfull" src="./compare-${i}.png" id="diffImage" label="Diff">
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  reportHtml += `
+      </body>
+    </html>
+  `;
+
+  return reportHtml;
+}
+
+
 (async () => console.log(await executeTest()))();
+
