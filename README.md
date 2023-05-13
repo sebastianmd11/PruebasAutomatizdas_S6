@@ -45,6 +45,8 @@ Para este punto es necesario tener Ghost instaladas las dos versiones de Ghost m
   
 # Los 10 escenarios de prueba modificados para la versión de Ghost 4.44.0. 
 Para las pruebas de regresión se modificaron los scripts de la herramienta Cypress. Esta herramienta se seleccionó por su flexibilidad de ejecución y rapidez.
+
+Ruta a las pruebas modificadas: **Pruebas_Cypress/cypress/e2e/Ghost_4.44**
 ## Ejecutar Pruebas en Cypress
   1) Clonar el Repositorio
   2) Abrir una terminal en la carpeta del repositorio
@@ -70,6 +72,7 @@ Dentro de cada carpeta contiene los screenshots de comparación y el archivo rep
 
 # Reportes de incidencias visuales.
 
+https://github.com/users/sebastianmd11/projects/1
 
 # Lista de funcionalidades a probar
 - Gestión de Post
