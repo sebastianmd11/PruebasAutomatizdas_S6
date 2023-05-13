@@ -20,13 +20,13 @@ When('I enter email {string}', async function (user) {
 
 When('I enter password {string}', async function (user) {
     let password = variables.password;
-    let element = await this.driver.$('input[name="password"]');
+    let element = await this.driver.$('#password');
     return await element.setValue(password);
 });
 
 When('I put identification {string}', async function (user) {
     let email = variables.username;
-    let element = await this.driver.$('input[name="identification"]');
+    let element = await this.driver.$('#identification');
     return await element.setValue(email);
 });
 
