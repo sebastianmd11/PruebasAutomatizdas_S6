@@ -1,4 +1,6 @@
 # MISOPruebasAutomatizadas
+
+# Versiones de las herramientas utilizadas
 Este es un repositorio creado para realizar las actividades de pruebas automatizadas
 
 Node Version: 14.21.3
@@ -6,7 +8,7 @@ Cypress Version: 12.9.0
 Ghost-CLI version: 1.24.0
 Kraken-Node Version 1.0.0
 
-Para esta semana se utilizaron dos versiones de Ghost corriendo en diferentes servidores locales.
+Para esta semana se utilizaron dos versiones de Ghost corriendo en diferentes servidores locales para las pruebas de regresión.
 
 Ghost Version 5.40.2 
 Ghost Version 4.44.0
@@ -15,6 +17,9 @@ Para este punto es necesario tener Ghost instaladas las dos versiones de Ghost m
 
 **Es necesario no tener ninguna página en Draft para que algunas pruebas corran correctarmente**
 
+# Los 40 escenarios de prueba que incluyen las capturas de pantalla (Versión de Ghost 5.40.2)
+
+
 ## Ejecutar Pruebas en Cypress
   1) Clonar el Repositorio
   2) Abrir una terminal en la carpeta del repositorio
@@ -22,12 +27,10 @@ Para este punto es necesario tener Ghost instaladas las dos versiones de Ghost m
   4) Ejecutar el comando "npm install"
   5) Modificar las credenciales de acceso a ghost 5.40.2 en el archivo **"Pruebas_Cypress/variables.json"**
   6) Modificar el puerto en el que se corre la version de Ghost 5.40.2 en **Pruebas_Cypress/variables.json**
-  7)Modificar las credenciales de acceso a ghost 4.44.0 en el archivo **"Pruebas_Cypress/variables_4.44.json"**
-  8) Modificar el puerto en el que se corre la version de Ghost 4.44.0 en **Pruebas_Cypress/variables_4.44.json**
-  9) Ejecutar el comando "cypress open"
-  10) Configurar el ambiente de pruebas seleccionando la carpeta "Pruebas_Cypress" en el repositorio local
-  11) Seleccionar la prueba a correr en la carpeta de Specs
-  12) Las capturas de pantalla generadas pueden ser revisadas en la ruta **Pruebas_Cypress/cypress/screenshots**
+  7) Ejecutar el comando "cypress open"
+  8) Configurar el ambiente de pruebas seleccionando la carpeta "Pruebas_Cypress" en el repositorio local
+  9) Seleccionar la prueba a correr en la carpeta de Specs
+  10) Las *capturas de pantalla* la generadas pueden ser revisadas en la ruta **Pruebas_Cypress/cypress/screenshots**
 
 ## Ejecutar Pruebas en Kraken
   1) Clonar el Repositorio
@@ -39,6 +42,20 @@ Para este punto es necesario tener Ghost instaladas las dos versiones de Ghost m
   7) Mover la prueba o las pruebas a ejecutar desde el folder **Pruebas_Kraken/feature/web/Feature_Storage** al folder **Pruebas_Kraken/feature**
   8) Ejecutar el comando "npx kraken-node run"
   9) Las capturas de pantalla generadas pueden ser revisadas en la ruta **Pruebas_Kraken/reports**
+  
+# Los 10 escnearios de prueba modificados para la versión de Ghost 4.44.0. 
+Para las pruebas de regresión se modificaron los scripts de la herramienta Cypress. Esta herramienta se seleccionó por su flexibilidad de ejecución y rapidez.
+## Ejecutar Pruebas en Cypress
+  1) Clonar el Repositorio
+  2) Abrir una terminal en la carpeta del repositorio
+  3) Dirigirse a la carpeta "Pruebas_Cypress"
+  4) Ejecutar el comando "npm install"
+  7) Modificar las credenciales de acceso a ghost 4.44.0 en el archivo **"Pruebas_Cypress/variables_4.44.json"**
+  8) Modificar el puerto en el que se corre la version de Ghost 4.44.0 en **Pruebas_Cypress/variables_4.44.json**
+  9) Ejecutar el comando "cypress open"
+  10) Configurar el ambiente de pruebas seleccionando la carpeta "Pruebas_Cypress" en el repositorio local
+  11) Seleccionar la prueba a correr en la carpeta de Specs y dentro de la sucarpeta Ghost 4.44
+  12) Las capturas de pantalla generadas pueden ser revisadas en la ruta **Pruebas_Cypress/cypress/screenshots**
   
 ## Comparacion de Herramientas E2E
 Las herramientas seleccionadas fueron Kraken y Cypress
