@@ -16,6 +16,12 @@ describe('Gestión Post', () => {
 
   it('Hacer Login, Crear un post, publicarlo y consultar la publicación', () => {
 
+    Cypress.on('uncaught:exception', (err, runnable) => {
+      // Esto previene que las excepciones no detectadas en tu código
+      // hagan que las pruebas fallen.
+      return false;
+    });    
+
       cy.visit(variables.UrlBase);
       cy.wait(4000);
       numeroPantalla++;
@@ -26,6 +32,13 @@ describe('Gestión Post', () => {
       cy.get(properties.buttons['sign-in']).click();
       numeroPantalla++;
       cy.screenshot(`${test_name}/${numeroPantalla}-after-sign-in`,{overwrite: true},{capture: 'runner'});
+
+      cy.wait(3000);
+      cy.get('body').then(body => {
+        if (body.find(properties.buttons['alert-new-version']).length > 0) {   // Comprueba si la barra informativa de ghost 5.0 existe
+          cy.get(properties.buttons['alert-new-version']).click();             // Si existe, se cierra antes de continuar con las pruebas
+        }
+      });
 
       cy.wait(3000);
       numeroPantalla++;

@@ -11,7 +11,7 @@
              "back-to-posts-button": "[data-test-link=\"posts\"]",
              "delete-post-button": ".settings-menu-delete-button",
              "confirm-delete-button": ".gh-btn.gh-btn-red",
-             "post-published":"[data-test-nav-custom=\"posts-Published\"]",
+             "post-published":"a[title=\"Published\"]",
              "post-view-link": ".post-view-link",
              "miembros":"a[href='#/members/']",
              "miembros-nuevo":"a[href='#/members/new/']",
@@ -19,7 +19,8 @@
              "miembro-primero":".gh-members-list-name",   
              "miembro-acciones":".gh-btn-action-icon",
              "miembro-eliminar":"span.red",
-             "miembro-eliminar-confirmacion":".gh-btn.gh-btn-red.gh-btn-icon"
+             "miembro-eliminar-confirmacion":".gh-btn.gh-btn-red.gh-btn-icon",
+             "alert-new-version":".gh-alert-close"
            },
            "elements": {
              "post-title": ".gh-post-bookmark-title",
