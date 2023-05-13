@@ -56,7 +56,7 @@ Ruta a las pruebas modificadas: **Pruebas_Cypress/cypress/e2e/Ghost_4.44**
   8) Modificar el puerto en el que se corre la version de Ghost 4.44.0 en **Pruebas_Cypress/variables_4.44.json**
   9) Ejecutar el comando "cypress open"
   10) Configurar el ambiente de pruebas seleccionando la carpeta "Pruebas_Cypress" en el repositorio local
-  11) Seleccionar la prueba a correr en la carpeta de Specs y dentro de la sucarpeta Ghost 4.44
+  11) Seleccionar la prueba a correr en la carpeta de *Specs/Ghost4.44*
   12) Las capturas de pantalla generadas pueden ser revisadas en la ruta **Pruebas_Cypress/cypress/screenshots**
   
 
@@ -73,6 +73,8 @@ Dentro de cada carpeta contiene los screenshots de comparación y el archivo rep
 # Reportes de incidencias visuales.
 
 https://github.com/users/sebastianmd11/projects/1
+
+# Video de explicación del procedimiento realizado durante la semana.
 
 # Lista de funcionalidades a probar
 - Gestión de Post
