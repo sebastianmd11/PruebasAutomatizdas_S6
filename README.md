@@ -1,7 +1,17 @@
 # MISOPruebasAutomatizadas
 Este es un repositorio creado para realizar las actividades de pruebas automatizadas
 
-Para este punto es necesario tener Ghost instalado localmente y ejecutado en algun puerto del servidor local.
+Node Version: 14.21.3
+Cypress Version: 12.9.0
+Ghost-CLI version: 1.24.0
+Kraken-Node Version 1.0.0
+
+Para esta semana se utilizaron dos versiones de Ghost corriendo en diferentes servidores locales.
+
+Ghost Version 5.40.2 
+Ghost Version 4.44.0
+
+Para este punto es necesario tener Ghost instaladas las dos versiones de Ghost mencionadas localmente y ejecutadas en puertos diferentes locales.
 
 **Es necesario no tener ninguna página en Draft para que algunas pruebas corran correctarmente**
 
@@ -10,10 +20,14 @@ Para este punto es necesario tener Ghost instalado localmente y ejecutado en alg
   2) Abrir una terminal en la carpeta del repositorio
   3) Dirigirse a la carpeta "Pruebas_Cypress"
   4) Ejecutar el comando "npm install"
-  5) Modificar las credenciales de acceso a ghost en el archivo **"variables.json"**
-  6) Ejecutar el comando "cypress open"
-  7) Configurar el ambiente de pruebas seleccionando la carpeta "Pruebas_Cypress" en el repositorio local
-  8) Seleccionar la prueba a correr en la carpeta de Specs
+  5) Modificar las credenciales de acceso a ghost 5.40.2 en el archivo **"Pruebas_Cypress/variables.json"**
+  6) Modificar el puerto en el que se corre la version de Ghost 5.40.2 en **Pruebas_Cypress/variables.json**
+  7)Modificar las credenciales de acceso a ghost 4.44.0 en el archivo **"Pruebas_Cypress/variables_4.44.json"**
+  8) Modificar el puerto en el que se corre la version de Ghost 4.44.0 en **Pruebas_Cypress/variables_4.44.json**
+  9) Ejecutar el comando "cypress open"
+  10) Configurar el ambiente de pruebas seleccionando la carpeta "Pruebas_Cypress" en el repositorio local
+  11) Seleccionar la prueba a correr en la carpeta de Specs
+  12) Las capturas de pantalla generadas pueden ser revisadas en la ruta **Pruebas_Cypress/cypress/screenshots**
 
 ## Ejecutar Pruebas en Kraken
   1) Clonar el Repositorio
@@ -21,9 +35,10 @@ Para este punto es necesario tener Ghost instalado localmente y ejecutado en alg
   3) Dirigirse a la carpeta "Pruebas_Kraken"
   4) Ejecutar el comando "npm install"
   5) Abrir el proyecto en un editor como VS Code
-  6) Modificar las credenciales de acceso a ghost en el archivo **"variables.json"**
+  6) Modificar las credenciales de acceso a ghost en el archivo **"Pruebas_Kraken/features/web/step_definitions/variables.json"**
   7) Mover la prueba o las pruebas a ejecutar desde el folder **Pruebas_Kraken/feature/web/Feature_Storage** al folder **Pruebas_Kraken/feature**
   8) Ejecutar el comando "npx kraken-node run"
+  9) Las capturas de pantalla generadas pueden ser revisadas en la ruta **Pruebas_Kraken/reports**
   
 ## Comparacion de Herramientas E2E
 Las herramientas seleccionadas fueron Kraken y Cypress
