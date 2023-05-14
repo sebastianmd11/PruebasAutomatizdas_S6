@@ -85,6 +85,8 @@ https://github.com/users/sebastianmd11/projects/1
 - Pages: Eliminar Página
 - Tag: Eliminar un tag
 - Tag: Nuevo Tag
+- User: Cambiar contraseña
+- User: Modificar información de usuario
 
 # Lista de los 20 Escenarios de pruebas
 
