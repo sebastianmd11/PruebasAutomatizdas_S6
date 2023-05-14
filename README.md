@@ -76,6 +76,8 @@ https://github.com/users/sebastianmd11/projects/1
 
 # Video de explicación del procedimiento realizado durante la semana.
 
+https://www.canva.com/design/DAFi12ljaF0/vz0mJhYIOF5hG9Fk9xGxQw/watch?utm_content=DAFi12ljaF0&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
+
 # Lista de funcionalidades para pruebas de VRT
 - Post: Crear un Post
 - Post: Revisar filtro de Post Publicados
