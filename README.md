@@ -64,7 +64,7 @@ Ruta a las pruebas modificadas: **Pruebas_Cypress/cypress/e2e/Ghost_4.44**
 Las herramientas seleccionadas para la regresión visual fueron: Ressemble y Backstop,
 Para la ejecución VRT se seleccionó la herramienta Ressemble por la facilidad de modificación de la codificación para adaptarlo a nuestras necesidades.
 La carpeta para el proyecto en resemble queda en la carpeta *Pruebas_Visual_Resemble*. La Herramienta Backstop se analiza de acuerdo al tutorial de clase
-A continuación se encuentra el enlace para el análisis de pros y contras de las herramientas
+A continuación se encuentra el enlace para el análisis de pros y contras de las herramientas: https://github.com/sebastianmd11/PruebasAutomatizdas_S6/wiki/Pros-y-contras-Ressemble-y-Backstop
 
 # Código del Reporte de comparación en html
 Dentro de la carpeta *Pruebas_Visual_Resemble/results* se encuentran los resultados de los 10 escenarios de cada prueba de regresion visual. Por cada funcionalidad se crea una carpeta que contiene internamente  los screenshots de la versión de Ghost 4.44 y la versión de Ghost 5.40 (before y after).
